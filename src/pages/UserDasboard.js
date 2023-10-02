@@ -38,7 +38,7 @@ function UserDasboard() {
 
   useEffect(() => {
     fetch(
-      "http://blog-vista.centralindia.cloudapp.azure.com/user/getuserinfo",
+      "https://blog-vista.centralindia.cloudapp.azure.com/user/getuserinfo",
       {
         method: "GET",
         headers: {

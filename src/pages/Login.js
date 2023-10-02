@@ -18,7 +18,7 @@ function Login() {
   const navigate = useNavigate();
   const handleOnSubmit = async () => {
     await axios.post(
-      "http://blog-vista.centralindia.cloudapp.azure.com/login",
+      "https://blog-vista.centralindia.cloudapp.azure.com/login",
       {
         email: Email,
         password: password,

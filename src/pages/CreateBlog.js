@@ -15,7 +15,7 @@ function CreateBlog() {
     blogdata.append("content", content);
     blogdata.append("thumbnail", file);
     const res = await fetch(
-      "http://blog-vista.centralindia.cloudapp.azure.com/blog/addpost",
+      "https://blog-vista.centralindia.cloudapp.azure.com/blog/addpost",
       {
         method: "POST",
         body: blogdata,

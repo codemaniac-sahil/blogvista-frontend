@@ -22,7 +22,7 @@ function Signup() {
     formdata.append("img", file);
     formdata.append("password", password);
     const res = await fetch(
-      "http://blog-vista.centralindia.cloudapp.azure.com/signup",
+      "https://blog-vista.centralindia.cloudapp.azure.com/signup",
       {
         method: "POST",
         body: formdata,

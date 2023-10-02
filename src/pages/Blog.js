@@ -97,7 +97,7 @@ function Blog() {
   const handleDeleteComment = async (commentid) => {
     await axios
       .delete(
-        `http://blog-vista.centralindia.cloudapp.azure.com/blog/deletecomment/${id}/${commentid}`,
+        `https://blog-vista.centralindia.cloudapp.azure.com/blog/deletecomment/${id}/${commentid}`,
         {
           withCredentials: true,
         }
@@ -110,7 +110,7 @@ function Blog() {
 
   const handleLikePost = async () => {
     await fetch(
-      `http://blog-vista.centralindia.cloudapp.azure.com/blog/like/${id}`,
+      `https://blog-vista.centralindia.cloudapp.azure.com/blog/like/${id}`,
       {
         method: "PUT",
       }

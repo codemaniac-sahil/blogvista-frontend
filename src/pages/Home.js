@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 function Home() {
   const [blogs, setblogs] = useState([]);
   useEffect(() => {
-    fetch("http://blog-vista.centralindia.cloudapp.azure.com/blog/getblogs")
+    fetch("https://blog-vista.centralindia.cloudapp.azure.com/blog/getblogs")
       .then((res) => res.json())
       .then((data) => {
         setblogs(data);

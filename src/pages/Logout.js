@@ -12,7 +12,7 @@ function Logout() {
   const { dispatch } = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://blog-vista.centralindia.cloudapp.azure.com/logout", {
+    fetch("https://blog-vista.centralindia.cloudapp.azure.com/logout", {
       method: "GET",
       credentials: "include",
     }).then(() => {
