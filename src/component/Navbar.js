@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/navbar.css";
+import { UserContext } from "../App";
 
 function Navbar() {
+  const { state } = useContext(UserContext);
+  const RenderMenu = () => {
+    if (state) {
+      return (
+        <>
+          <li>
+            <NavLink to="/logout">Logout</NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </li>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <li>
+            <NavLink to="/login">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/signup">Signup</NavLink>
+          </li>
+        </>
+      );
+    }
+  };
   return (
     <>
       <nav className="navbar">
@@ -12,12 +39,7 @@ function Navbar() {
           </h1>
         </div>
         <ul className="navlinks">
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
-          <li>
-            <NavLink to="/signup">Signup</NavLink>
-          </li>
+          <RenderMenu />
         </ul>
       </nav>
     </>

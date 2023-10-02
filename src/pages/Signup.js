@@ -11,7 +11,8 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [file, setFile] = useState(null);
   const navigate = useNavigate();
-  const handleOnSubmit = async () => {
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
     console.log(firstName, lastName, Username, Email, password, file);
     let formdata = new FormData();
     formdata.append("firstname", firstName);
@@ -21,15 +22,16 @@ function Signup() {
     formdata.append("img", file);
     formdata.append("password", password);
     const res = await fetch(
-      "https://blog-vista.centralindia.cloudapp.azure.com/signup",
+      "http://blog-vista.centralindia.cloudapp.azure.com/signup",
       {
         method: "POST",
         body: formdata,
-      }
+      },
+      { withCredentials: true }
     );
     if (res.ok) {
       console.log("User created Successfully");
-      navigate("/login");
+      navigate("/dashboard");
     }
   };
   return (

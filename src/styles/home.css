@@ -11,6 +11,9 @@
     margin-bottom: 20px; /* Add some spacing between cards */
     justify-content: center;
     gap: 2em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
   }
  
   /* Styles for the blog image */

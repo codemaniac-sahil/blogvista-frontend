@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
 import "../styles/home.css";
 import { NavLink } from "react-router-dom";
+
+/**
+ * Shows a list of blogs and time ago. The user is prompted to select a blog by their username and then he / she will be able to view it.
+ *
+ *
+ * @return { Promise } Resolves when the app is ready to display the home page. Rejects if there is an error
+ */
 function Home() {
   const [blogs, setblogs] = useState([]);
   useEffect(() => {
-    fetch("https://blog-vista.centralindia.cloudapp.azure.com/blog/getblogs")
+    fetch("http://blog-vista.centralindia.cloudapp.azure.com/blog/getblogs")
       .then((res) => res.json())
       .then((data) => {
         setblogs(data);
       });
   }, []);
-  console.log(blogs);
+
   const getDate = (date) => {
     const dateObject = new Date(date);
     const year = dateObject.getFullYear();
@@ -26,11 +33,14 @@ function Home() {
     const now = new Date();
     const seconds = Math.floor((now - date) / 1000);
 
+    // Returns a string representing the number of seconds ago.
     if (seconds < 60) {
       return seconds + " seconds ago";
+      // Returns a string representing the number of seconds ago.
     } else if (seconds < 3600) {
       const minutes = Math.floor(seconds / 60);
       return minutes === 1 ? "1 minute ago" : minutes + " minutes ago";
+      // Returns a string representing the number of days ago ago.
     } else if (seconds < 86400) {
       const hours = Math.floor(seconds / 3600);
       return hours === 1 ? "1 hour ago" : hours + " hours ago";
@@ -45,7 +55,7 @@ function Home() {
       <div className="homepage">
         {blogs.map((blog) => (
           <>
-            <NavLink to="/">
+            <NavLink to={`/blog/${blog._id}`}>
               <div className="blog-card">
                 <div className="blog-image">
                   <img src={blog.blogThumbnail} alt={blog._id} />

@@ -1,0 +1,5 @@
+{
+    "docify.translateService.docstringFormat": "Doxygen",
+    "docify.translateService.programmingLanguage": "auto-detect",
+    "docify.commentService.inlineComments": false
+}
