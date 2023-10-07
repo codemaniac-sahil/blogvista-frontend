@@ -22,7 +22,7 @@ function Blog() {
   const { id } = useParams();
   const getComments = useCallback(async () => {
     fetch(
-      `http://blog-vista.centralindia.cloudapp.azure.com/blog/getcomments/${id}`
+      `https://blog-vista.centralindia.cloudapp.azure.com/blog/getcomments/${id}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -31,7 +31,7 @@ function Blog() {
   }, [id]);
   useEffect(() => {
     fetch(
-      `http://blog-vista.centralindia.cloudapp.azure.com/blog/getblog/${id}`
+      `https://blog-vista.centralindia.cloudapp.azure.com/blog/getblog/${id}`
     )
       .then((res) => res.json())
       .then((data) => {
