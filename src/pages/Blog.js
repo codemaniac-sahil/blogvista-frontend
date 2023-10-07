@@ -81,7 +81,7 @@ function Blog() {
   const handleAddComment = async () => {
     await axios
       .put(
-        `http://blog-vista.centralindia.cloudapp.azure.com/blog/addcomment/${id}`,
+        `https://blog-vista.centralindia.cloudapp.azure.com/blog/addcomment/${id}`,
         {
           comment: comment,
         },
