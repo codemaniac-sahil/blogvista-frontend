@@ -37,17 +37,14 @@ function UserDasboard() {
   const [userinfo, setUserInfo] = useState([]);
 
   useEffect(() => {
-    fetch(
-      "https://blog-vista.centralindia.cloudapp.azure.com/user/getuserinfo",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }
-    )
+    fetch(`${process.env.REACT_APP_BASE_URL}/user/getuserinfo`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((data) => {
         setUserInfo(data);

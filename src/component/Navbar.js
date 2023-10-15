@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/navbar.css";
-import { UserContext } from "../App";
 
 function Navbar() {
-  const { state } = useContext(UserContext);
   const RenderMenu = () => {
-    if (state) {
+    const isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated"));
+    if (isAuthenticated) {
       return (
         <>
           <li>
@@ -29,6 +28,21 @@ function Navbar() {
         </>
       );
     }
+
+    //   return (
+    //   );
+    // } else {
+    //   return (
+    //     <>
+    //       <li>
+    //         <NavLink to="/login">Login</NavLink>
+    //       </li>
+    //       <li>
+    //         <NavLink to="/signup">Signup</NavLink>
+    //       </li>
+    //     </>
+    //   );
+    // }
   };
   return (
     <>

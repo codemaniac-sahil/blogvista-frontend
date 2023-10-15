@@ -1,6 +1,5 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../App";
 
 /**
  * Logs out the currently logged in user. This is a non - destructive action as there is no guarantee that the user will be logged out of the system at this point.
@@ -9,17 +8,16 @@ import { UserContext } from "../App";
  * @return { Object } React component that renders the logout page after navigating to the logout page and returning
  */
 function Logout() {
-  const { dispatch } = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("https://blog-vista.centralindia.cloudapp.azure.com/logout", {
+    fetch(`${process.env.REACT_APP_BASE_URL}/logout`, {
       method: "GET",
       credentials: "include",
     }).then(() => {
-      dispatch({ type: "USER", payload: false });
+      localStorage.setItem("isAuthenticated", JSON.stringify(false));
       navigate("/login", { replace: true });
     });
-  }, [dispatch, navigate]);
+  }, [navigate]);
   return <div>Logout</div>;
 }
 

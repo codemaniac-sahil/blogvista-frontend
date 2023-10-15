@@ -14,14 +14,11 @@ function CreateBlog() {
     blogdata.append("title", postTitle);
     blogdata.append("content", content);
     blogdata.append("thumbnail", file);
-    const res = await fetch(
-      "https://blog-vista.centralindia.cloudapp.azure.com/blog/addpost",
-      {
-        method: "POST",
-        body: blogdata,
-        credentials: "include",
-      }
-    );
+    const res = await fetch(`${process.env.REACT_APP_BASE_URL}/blog/addpost`, {
+      method: "POST",
+      body: blogdata,
+      credentials: "include",
+    });
     if (res.ok) {
       console.log("Blog created Successfully");
       navigate("/dashboard");

@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../component/Navbar";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/signup.css";
 import axios from "axios";
-import { UserContext } from "../App";
 
 /**
  * Renders the login page. It is used to log in a user to Samsung. You need to be logged in before using this page.
@@ -12,20 +11,19 @@ import { UserContext } from "../App";
  * @return { JSX } The login page as a React element. Note that this page does not render the user's page
  */
 function Login() {
-  const { dispatch } = useContext(UserContext);
   const [Email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handleOnSubmit = async () => {
     await axios.post(
-      "https://blog-vista.centralindia.cloudapp.azure.com/login",
+      `${process.env.REACT_APP_BASE_URL}/login`,
       {
         email: Email,
         password: password,
       },
       { withCredentials: true }
     );
-    dispatch({ type: "USER", payload: true });
+    localStorage.setItem("isAuthenticated", JSON.stringify(true));
     navigate("/dashboard");
   };
   return (

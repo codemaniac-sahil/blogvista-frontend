@@ -21,18 +21,14 @@ function Blog() {
   const [blogComments, setBlogComments] = useState([]);
   const { id } = useParams();
   const getComments = useCallback(async () => {
-    fetch(
-      `https://blog-vista.centralindia.cloudapp.azure.com/blog/getcomments/${id}`
-    )
+    fetch(`${process.env.REACT_APP_BASE_URL}/blog/getcomments/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlogComments(data);
       });
   }, [id]);
   useEffect(() => {
-    fetch(
-      `https://blog-vista.centralindia.cloudapp.azure.com/blog/getblog/${id}`
-    )
+    fetch(`${process.env.REACT_APP_BASE_URL}/blog/getblog/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
@@ -81,7 +77,7 @@ function Blog() {
   const handleAddComment = async () => {
     await axios
       .put(
-        `https://blog-vista.centralindia.cloudapp.azure.com/blog/addcomment/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/blog/addcomment/${id}`,
         {
           comment: comment,
         },
@@ -97,7 +93,7 @@ function Blog() {
   const handleDeleteComment = async (commentid) => {
     await axios
       .delete(
-        `https://blog-vista.centralindia.cloudapp.azure.com/blog/deletecomment/${id}/${commentid}`,
+        `${process.env.REACT_APP_BASE_URL}/blog/deletecomment/${id}/${commentid}`,
         {
           withCredentials: true,
         }
@@ -109,12 +105,9 @@ function Blog() {
   };
 
   const handleLikePost = async () => {
-    await fetch(
-      `https://blog-vista.centralindia.cloudapp.azure.com/blog/like/${id}`,
-      {
-        method: "PUT",
-      }
-    )
+    await fetch(`${process.env.REACT_APP_BASE_URL}/blog/like/${id}`, {
+      method: "PUT",
+    })
       .then(() => console.log("hello word"))
       .catch(() => console.log("error"));
   };

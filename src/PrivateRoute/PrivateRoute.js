@@ -3,7 +3,6 @@ import { Navigate, Outlet } from "react-router-dom";
 
 // import { UserContext } from "../App";
 
-localStorage.setItem("isAuthenticated", JSON.stringify(true));
 function PrivateRoute() {
   const isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated"));
 

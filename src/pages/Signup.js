@@ -22,7 +22,7 @@ function Signup() {
     formdata.append("img", file);
     formdata.append("password", password);
     const res = await fetch(
-      "https://blog-vista.centralindia.cloudapp.azure.com/signup",
+      `${process.env.REACT_APP_BASE_URL}/signup`,
       {
         method: "POST",
         body: formdata,
@@ -31,6 +31,7 @@ function Signup() {
     );
     if (res.ok) {
       console.log("User created Successfully");
+      localStorage.setItem("isAuthenticated", JSON.stringify(true));
       navigate("/dashboard");
     }
   };
