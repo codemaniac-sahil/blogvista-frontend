@@ -58,7 +58,7 @@ https://blogglevista.azurewebsites.net/
 [MIT](https://choosealicense.com/licenses/mit/)
 
 
-Thank you for choosing BlogVista Backend! Happy coding! 🚀
+
 
 
 
